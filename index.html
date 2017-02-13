@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <title>Index</title>
+</head>
+<body>
+  <div id="app">
+    <h4>Peoples</h4>
+    <table border="1px solid black">
+      <tr>
+        <td>Name</td>
+        <td>Probality</td>
+      </tr>
+      <tr v-for="people in peoples">
+        <td>{{ people.name }}</td>
+        <td>{{ people.prop }}</td>
+      </tr>
+    </table>
+    <h4>Weapons</h4>
+    <h4>Places</h4>
+  </div>
+</body>
+</html>
+
+<script type="text/javascript">
+  var app = new Vue({
+    el: '#app',
+    data: {
+      message: 'hello world',
+      peoples: [
+        { name: 'green', prop: 0 },
+        { name: 'plum', prop: 0 },
+        { name: 'mustard', prop: 0 },
+        { name: 'peacock', prop: 0 },
+        { name: 'scarlet', prop: 0 },
+        { name: 'white', prop: 0 }
+      ]
+      //
+      // candle-stick: 0,
+      // knife: 0,
+      // leadpipe: 0,
+      // revolver: 0,
+      // rope: 0,
+      // wrench: 0,
+      // conservatory: 0,
+      // lounge: 0,
+      // kitchen: 0,
+      // library: 0,
+      // hall: 0,
+      // study: 0,
+      // ball-room: 0,
+      // dining-room: 0,
+      // billiard-room: 0
+    }
+  })
+</script>
