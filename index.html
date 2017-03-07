@@ -2,59 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue"></script>
   <title>Index</title>
+  <style media="screen">
+
+  </style>
 </head>
 <body>
   <div id="app">
-    <h4>Peoples</h4>
-    <table border="1px solid black">
+    <table>
       <tr>
-        <td>Name</td>
-        <td>Probality</td>
+        <button v-on:click="changeState( 'people' )"><h4>Peoples</h4></button>
+        <!-- <p v-if="showPeople"> -->
+          <table border="1px solid black">
+            <tr>
+              <td>Name</td>
+              <td>Probality</td>
+            </tr>
+            <tr v-for="people in peoples">
+              <td>{{ people.name }}</td>
+              <td>{{ people.prop }}</td>
+            </tr>
+          </table>
+        <!-- </p> -->
+        <h4>Weapons</h4>
+        <table border="1px solid black">
+          <tr>
+            <td>Weapon</td>
+            <td>Probality</td>
+          </tr>
+          <tr v-for="weapon in weapons">
+            <td>{{ weapon.name }}</td>
+            <td>{{ weapon.prop }}</td>
+          </tr>
+        </table>
+        <h4>Places</h4>
+        <table border="1px solid black">
+          <tr>
+            <td>Place</td>
+            <td>Probality</td>
+          </tr>
+          <tr v-for="place in places">
+            <td>{{ place.name }}</td>
+            <td>{{ place.prop }}</td>
+          </tr>
+        </table>
       </tr>
-      <tr v-for="people in peoples">
-        <td>{{ people.name }}</td>
-        <td>{{ people.prop }}</td>
+      <tr>
+
       </tr>
     </table>
-    <h4>Weapons</h4>
-    <h4>Places</h4>
   </div>
 </body>
 </html>
 
 <script type="text/javascript">
-  var app = new Vue({
-    el: '#app',
-    data: {
-      message: 'hello world',
-      peoples: [
-        { name: 'green', prop: 0 },
-        { name: 'plum', prop: 0 },
-        { name: 'mustard', prop: 0 },
-        { name: 'peacock', prop: 0 },
-        { name: 'scarlet', prop: 0 },
-        { name: 'white', prop: 0 }
-      ]
-      //
-      // candle-stick: 0,
-      // knife: 0,
-      // leadpipe: 0,
-      // revolver: 0,
-      // rope: 0,
-      // wrench: 0,
-      // conservatory: 0,
-      // lounge: 0,
-      // kitchen: 0,
-      // library: 0,
-      // hall: 0,
-      // study: 0,
-      // ball-room: 0,
-      // dining-room: 0,
-      // billiard-room: 0
+var app = new Vue({
+  el: '#app',
+  data: {
+    showPeople: false,
+    showWeapon: false,
+    showPlace: false,
+    peoples: [
+      { name: 'green', prop: 0 },
+      { name: 'plum', prop: 0 },
+      { name: 'mustard', prop: 0 },
+      { name: 'peacock', prop: 0 },
+      { name: 'scarlet', prop: 0 },
+      { name: 'white', prop: 0 }
+    ],
+    weapons: [
+      { name: 'candle-stick', prop: 0 },
+      { name: 'knife', prop: 0 },
+      { name: 'leadpipe', prop: 0 },
+      { name: 'revolver', prop: 0 },
+      { name: 'rope', prop: 0 },
+      { name: 'wrench', prop: 0 }
+    ],
+    places:[
+      { name: 'conservatory', prop: 0 },
+      { name: 'lounge', prop: 0 },
+      { name: 'kitchen', prop: 0 },
+      { name: 'library', prop: 0 },
+      { name: 'hall', prop: 0 },
+      { name: 'study', prop: 0 },
+      { name: 'ball-room', prop: 0 },
+      { name: 'dining-room', prop: 0 },
+      { name: 'billiard-room', prop: 0 }
+    ]
+  },
+  methods:{
+    changeState: function( n ){
+      console.log( 'in changeState' )
+      if( n.toLowerCase() == 'people' && this.showPeople ) this.showPeople = false
+      else this.showPeople = true
     }
-  })
+  }
+})
 </script>
