@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,57 +6,58 @@
   <script src="https://unpkg.com/vue"></script>
   <title>Index</title>
   <style media="screen">
-
+    button{
+      width: 200px;
+      margin: auto;
+    }
+    .table1{
+      margin: auto;
+      border: 1px;
+      border-style: dashed;
+    }
   </style>
 </head>
 <body>
   <div id="app">
-    <table>
-      <tr>
-        <button v-on:click="changeState( 'people' )"><h4>Peoples</h4></button>
-        <!-- <p v-if="showPeople"> -->
-          <table border="1px solid black">
-            <tr>
-              <td>Name</td>
-              <td>Probality</td>
-            </tr>
-            <tr v-for="people in peoples">
-              <td>{{ people.name }}</td>
-              <td>{{ people.prop }}</td>
-            </tr>
-          </table>
-        <!-- </p> -->
-        <h4>Weapons</h4>
-        <table border="1px solid black">
-          <tr>
-            <td>Weapon</td>
-            <td>Probality</td>
-          </tr>
-          <tr v-for="weapon in weapons">
-            <td>{{ weapon.name }}</td>
-            <td>{{ weapon.prop }}</td>
-          </tr>
-        </table>
-        <h4>Places</h4>
-        <table border="1px solid black">
-          <tr>
-            <td>Place</td>
-            <td>Probality</td>
-          </tr>
-          <tr v-for="place in places">
-            <td>{{ place.name }}</td>
-            <td>{{ place.prop }}</td>
-          </tr>
-        </table>
-      </tr>
-      <tr>
-
-      </tr>
-    </table>
+    <button v-on:click="showPeopleList()"><h4>Peoples</h4>
+      <table class="table1" v-if="showPeople">
+        <tr>
+          <td>Name</td>
+          <td>Probality</td>
+        </tr>
+        <tr v-for="people in peoples">
+          <td>{{ people.name }}</td>
+          <td>{{ people.prop }}</td>
+        </tr>
+      </table>
+    </button>
+    <button v-on:click="showWeaponList()"><h4>Weapons</h4>
+      <table class="table1" v-if="showWeapon">
+        <tr>
+          <td>Weapon</td>
+          <td>Probality</td>
+        </tr>
+        <tr v-for="weapon in weapons">
+          <td>{{ weapon.name }}</td>
+          <td>{{ weapon.prop }}</td>
+        </tr>
+      </table>
+    </button>
+    <button v-on:click="showPlaceList()"><h4>Places</h4>
+      <table class="table1" v-if="showPlace">
+        <tr>
+          <td>Place</td>
+          <td>Probality</td>
+        </tr>
+        <tr v-for="place in places">
+          <td>{{ place.name }}</td>
+          <td>{{ place.prop }}</td>
+        </tr>
+      </table>
+    </button>
   </div>
 </body>
 </html>
-
 <script type="text/javascript">
 var app = new Vue({
   el: '#app',
@@ -92,10 +94,17 @@ var app = new Vue({
     ]
   },
   methods:{
-    changeState: function( n ){
-      console.log( 'in changeState' )
-      if( n.toLowerCase() == 'people' && this.showPeople ) this.showPeople = false
+    showPeopleList: function(){
+      if( this.showPeople ) this.showPeople = false
       else this.showPeople = true
+    },
+    showWeaponList: function(){
+      if( this.showWeapon ) this.showWeapon = false
+      else this.showWeapon = true
+    },
+    showPlaceList: function(){
+      if( this.showPlace ) this.showPlace = false
+      else this.showPlace = true
     }
   }
 })
